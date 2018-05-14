@@ -7,11 +7,6 @@ namespace PagedList
     public interface IPageMetaData
     {
         /// <summary>
-        /// Page index
-        /// </summary>
-        int PageIndex { get; set; }
-
-        /// <summary>
         /// page size
         /// </summary>
         int PageSize { get; set; }

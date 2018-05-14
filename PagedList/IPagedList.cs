@@ -7,23 +7,17 @@ using Newtonsoft.Json;
 namespace PagedList
 {
     /// <summary>
-    /// Because <see cref="PagedList{T,F}"/> inherit IList will lose data on serialize data
-    /// So inherit <see cref="IPagedList{T,F}"/> instead
-    /// <see cref="IPagedList{T,F}"/> add most interface from <see cref="IList{T}"/>
+    /// Because <see cref="PagedList{T}"/> inherit IList will lose data on serialize data
+    /// So inherit <see cref="IPagedList{T}"/> instead
+    /// <see cref="IPagedList{T}"/> add most interface from <see cref="IList{T}"/>
     /// </summary>
-    /// <typeparam name="TMataData"></typeparam>
     /// <typeparam name="TData"></typeparam>
-    public interface IPagedList<out TMataData, TData> where TMataData : IPageMetaData 
+    public interface IPagedList<TData> : IPageMetaData
     {
         /// <summary>
         /// Data
         /// </summary>
-        IList<TData> Data { get; }
-
-        /// <summary>
-        /// Meta data
-        /// </summary>
-        TMataData MetaData { get; }
+        IDictionary<int,IList<TData>> Data { get; }
 
         /// <summary>
         /// Add

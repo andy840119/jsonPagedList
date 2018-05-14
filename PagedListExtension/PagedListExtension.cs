@@ -9,7 +9,7 @@ namespace PagedList
         /// </summary>
         /// <param name="pagedList1"></param>
         /// <param name="pagedList2"></param>
-        public static void CombinePageData<TMataData, TData>(this IPagedList<TMataData, TData> pagedList1, IPagedList<TMataData, TData> pagedList2) where TMataData : class, IPageMetaData, new()
+        public static void CombinePageData<TData>(this IPagedList<TData> pagedList1, IPagedList<TData> pagedList2)
         {
             
         }

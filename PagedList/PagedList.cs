@@ -7,77 +7,52 @@ using Newtonsoft.Json;
 namespace PagedList
 {
     /// <summary>
-    /// Paged list with dafault metadata
-    /// </summary>
-    /// <typeparam name="TData"></typeparam>
-    public class PagedList<TData> : PagedList<PageMetaData, TData>
-    {
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        public PagedList()
-        {
-
-        }
-
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
-        public PagedList(IQueryable<TData> source, int pageIndex, int pageSize) : base(source, pageIndex, pageSize)
-        {
-
-        }
-
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
-        public PagedList(IList<TData> source, int pageIndex, int pageSize) : base(source, pageIndex, pageSize)
-        {
-
-        }
-
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="totalCount"></param>
-        public PagedList(IEnumerable<TData> source, int pageIndex, int pageSize, int totalCount) : base(source, pageIndex, pageSize, totalCount)
-        {
-
-        }
-    }
-
-    /// <summary>
     /// Custom PageList
     /// </summary>
-    /// <typeparam name="TMataData"></typeparam>
     /// <typeparam name="TData"></typeparam>
-    public class PagedList<TMataData,TData> : IPagedList<TMataData,TData> where TMataData : class, IPageMetaData , new ()
+    public class PagedList<TData> : IPagedList<TData>
     {
         /// <summary>
         /// Data
         /// </summary>
-        public IList<TData> Data { get; } = new List<TData>();
+        public IDictionary<int, IList<TData>> Data { get; } = new Dictionary<int, IList<TData>>();
 
         /// <summary>
-        /// Meta data
+        /// Temp page index
         /// </summary>
-        public TMataData MetaData { get; } = new TMataData();
+        protected int PageIndex { get; set; }
+
+        /// <summary>
+        /// page size
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
+        /// total count
+        /// </summary>
+        public int TotalCount { get; set; }
+
+        /// <summary>
+        /// total page
+        /// </summary>
+        public int TotalPages { get; set; }
+
+        /// <summary>
+        /// has pervious page
+        /// </summary>
+        public bool HasPreviousPage => (Data.Keys.Min() > 0);
+
+        /// <summary>
+        /// has next page
+        /// </summary>
+        public bool HasNextPage => (Data.Keys.Max() + 1 < TotalPages);
 
         /// <summary>
         /// Ctor
         /// </summary>
         public PagedList()
         {
-
+            Data.Add(new KeyValuePair<int, IList<TData>>(PageIndex,new List<TData>()));
         }
 
         /// <summary>
@@ -88,19 +63,17 @@ namespace PagedList
         /// <param name="pageSize">Page size</param>
         public PagedList(IQueryable<TData> source, int pageIndex, int pageSize)
         {
-            MetaData.TotalCount = source.Count();
-            MetaData.TotalPages = MetaData.TotalCount / pageSize;
+            TotalCount = source.Count();
+            TotalPages = TotalCount / pageSize;
 
-            if (MetaData.TotalCount % pageSize > 0)
-                MetaData.TotalPages++;
+            if (TotalCount % pageSize > 0)
+                TotalPages++;
 
-            MetaData.PageSize = pageSize;
-            MetaData.PageIndex = pageIndex;
+            PageSize = pageSize;
+            PageIndex = pageIndex;
 
-            if (Data is List<TData> list)
-            {
-                list.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).ToList());
-            }
+            var list = source.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            Data.Add(new KeyValuePair<int, IList<TData>>(PageIndex, list));
         }
 
         /// <summary>
@@ -111,19 +84,17 @@ namespace PagedList
         /// <param name="pageSize">Page size</param>
         public PagedList(IList<TData> source, int pageIndex, int pageSize)
         {
-            MetaData.TotalCount = source.Count();
-            MetaData.TotalPages = MetaData.TotalCount / pageSize;
+            TotalCount = source.Count();
+            TotalPages = TotalCount / pageSize;
 
-            if (MetaData.TotalCount % pageSize > 0)
-                MetaData.TotalPages++;
+            if (TotalCount % pageSize > 0)
+                TotalPages++;
 
-            MetaData.PageSize = pageSize;
-            MetaData.PageIndex = pageIndex;
+            PageSize = pageSize;
+            PageIndex = pageIndex;
 
-            if (Data is List<TData> list)
-            {
-                list.AddRange(source.Skip(pageIndex * pageSize).Take(pageSize).ToList());
-            }
+            var list = source.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            Data.Add(new KeyValuePair<int, IList<TData>>(PageIndex, list));
         }
 
         /// <summary>
@@ -135,19 +106,17 @@ namespace PagedList
         /// <param name="totalCount">Total count</param>
         public PagedList(IEnumerable<TData> source, int pageIndex, int pageSize, int totalCount)
         {
-            MetaData.TotalCount = totalCount;
-            MetaData.TotalPages = MetaData.TotalCount / pageSize;
+            TotalCount = totalCount;
+            TotalPages = TotalCount / pageSize;
 
-            if (MetaData.TotalCount % pageSize > 0)
-                MetaData.TotalPages++;
+            if (TotalCount % pageSize > 0)
+                TotalPages++;
 
-            MetaData.PageSize = pageSize;
-            MetaData.PageIndex = pageIndex;
+            PageSize = pageSize;
+            PageIndex = pageIndex;
 
-            if (Data is List<TData> list)
-            {
-                list.AddRange(source);
-            }
+            var list = source.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            Data.Add(new KeyValuePair<int, IList<TData>>(PageIndex, list));
         }
 
         /// <summary>
@@ -156,7 +125,7 @@ namespace PagedList
         /// <param name="item"></param>
         public void Add(TData item)
         {
-            Data.Add(item);
+            Data[PageIndex].Add(item);
         }
 
         /// <summary>
@@ -164,7 +133,7 @@ namespace PagedList
         /// </summary>
         public void Clear()
         {
-            Data.Clear();
+            Data[PageIndex].Clear();
         }
 
         /// <summary>
@@ -174,7 +143,7 @@ namespace PagedList
         /// <returns></returns>
         public bool Contains(TData item)
         {
-            return Data.Contains(item);
+            return Data[PageIndex].Contains(item);
         }
 
         /// <summary>
@@ -184,7 +153,7 @@ namespace PagedList
         /// <param name="arrayIndex"></param>
         public void CopyTo(TData[] array, int arrayIndex)
         {
-            Data.CopyTo(array, arrayIndex);
+            Data[PageIndex].CopyTo(array, arrayIndex);
         }
 
         /// <summary>
@@ -194,13 +163,13 @@ namespace PagedList
         /// <returns></returns>
         public bool Remove(TData item)
         {
-            return Data.Remove(item);
+            return Data[PageIndex].Remove(item);
         }
 
         /// <summary>
         /// Count
         /// </summary>
-        public int Count => Data.Count;
+        public int Count => Data[PageIndex].Count;
 
         /// <summary>
         /// IsReadOnly
@@ -214,7 +183,7 @@ namespace PagedList
         /// <returns></returns>
         public int IndexOf(TData item)
         {
-            return Data.IndexOf(item);
+            return Data[PageIndex].IndexOf(item);
         }
 
         /// <summary>
@@ -224,7 +193,7 @@ namespace PagedList
         /// <param name="item"></param>
         public void Insert(int index, TData item)
         {
-            Data.Insert(index, item);
+            Data[PageIndex].Insert(index, item);
         }
 
         /// <summary>
@@ -233,7 +202,7 @@ namespace PagedList
         /// <param name="index"></param>
         public void RemoveAt(int index)
         {
-            Data.RemoveAt(index);
+            Data[PageIndex].RemoveAt(index);
         }
 
         /// <summary>
@@ -244,8 +213,8 @@ namespace PagedList
         [JsonIgnore]
         public TData this[int index]
         {
-            get => Data[index];
-            set => Data[index] = value;
+            get => Data[PageIndex][index];
+            set => Data[PageIndex][index] = value;
         }
     }
 }
