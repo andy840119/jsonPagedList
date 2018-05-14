@@ -6,7 +6,7 @@ namespace JsonPagedList
     public static class PagedListExtension
     {
         /// <summary>
-        /// Convert IList to PagedList
+        ///     Convert IList to PagedList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
@@ -20,7 +20,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Convert IQueryable to pageList
+        ///     Convert IQueryable to pageList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
@@ -34,7 +34,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Convert IEnumerable to pageList
+        ///     Convert IEnumerable to pageList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
@@ -42,14 +42,15 @@ namespace JsonPagedList
         /// <param name="pageSize"></param>
         /// <param name="totalCount"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, int pageIndex, int pageSize, int totalCount)
+        public static IPagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, int pageIndex,
+            int pageSize, int totalCount)
         {
             var pageList = new PagedList<TData>(pagedList, pageIndex, pageSize, totalCount);
             return pageList;
         }
 
         /// <summary>
-        /// Convert IList to PagedList
+        ///     Convert IList to PagedList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
@@ -62,7 +63,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Convert IQueryable to pageList
+        ///     Convert IQueryable to pageList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
@@ -75,21 +76,22 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Convert IEnumerable to pageList
+        ///     Convert IEnumerable to pageList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
         /// <param name="request"></param>
         /// <param name="totalCount"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, IPageRequest request, int totalCount)
+        public static IPagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, IPageRequest request,
+            int totalCount)
         {
             var pageList = new PagedList<TData>(pagedList, request.Index, request.Size, totalCount);
             return pageList;
         }
 
         /// <summary>
-        /// Convert pageList to IList
+        ///     Convert pageList to IList
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="pagedList"></param>

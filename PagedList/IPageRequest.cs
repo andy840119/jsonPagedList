@@ -1,17 +1,17 @@
 ﻿namespace JsonPagedList
 {
     /// <summary>
-    /// page request
+    ///     page request
     /// </summary>
     public interface IPageRequest
     {
         /// <summary>
-        /// Index
+        ///     Index
         /// </summary>
         int Index { get; set; }
 
         /// <summary>
-        /// Size
+        ///     Size
         /// </summary>
         int Size { get; set; }
     }

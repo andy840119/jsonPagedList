@@ -3,85 +3,85 @@
 namespace JsonPagedList
 {
     /// <summary>
-    /// Because <see cref="PagedList{T}"/> inherit IList will lose data on serialize data
-    /// So inherit <see cref="IPagedList{T}"/> instead
-    /// <see cref="IPagedList{T}"/> add most interface from <see cref="IList{T}"/>
+    ///     Because <see cref="PagedList{T}" /> inherit IList will lose data on serialize data
+    ///     So inherit <see cref="IPagedList{T}" /> instead
+    ///     <see cref="IPagedList{T}" /> add most interface from <see cref="IList{T}" />
     /// </summary>
     /// <typeparam name="TData"></typeparam>
     public interface IPagedList<TData> : IPageMetaData
     {
         /// <summary>
-        /// Data
+        ///     Data
         /// </summary>
-        IDictionary<int,IList<TData>> Data { get; }
+        IDictionary<int, IList<TData>> Data { get; }
 
         /// <summary>
-        /// Add
+        ///     Count
+        /// </summary>
+        int Count { get; }
+
+        /// <summary>
+        ///     IsReadOnly
+        /// </summary>
+        bool IsReadOnly { get; }
+
+        /// <summary>
+        ///     index of object
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        TData this[int index] { get; set; }
+
+        /// <summary>
+        ///     Add
         /// </summary>
         /// <param name="item"></param>
         void Add(TData item);
 
         /// <summary>
-        /// Clear
+        ///     Clear
         /// </summary>
         void Clear();
 
         /// <summary>
-        /// Contain
+        ///     Contain
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
         bool Contains(TData item);
 
         /// <summary>
-        /// CopyTo
+        ///     CopyTo
         /// </summary>
         /// <param name="array"></param>
         /// <param name="arrayIndex"></param>
         void CopyTo(TData[] array, int arrayIndex);
 
         /// <summary>
-        /// Remove
+        ///     Remove
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
         bool Remove(TData item);
 
         /// <summary>
-        /// Count
-        /// </summary>
-        int Count { get; }
-
-        /// <summary>
-        /// IsReadOnly
-        /// </summary>
-        bool IsReadOnly { get; }
-
-        /// <summary>
-        /// index of
+        ///     index of
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
         int IndexOf(TData item);
 
         /// <summary>
-        /// insert
+        ///     insert
         /// </summary>
         /// <param name="index"></param>
         /// <param name="item"></param>
         void Insert(int index, TData item);
 
         /// <summary>
-        /// remove at
+        ///     remove at
         /// </summary>
         /// <param name="index"></param>
         void RemoveAt(int index);
-
-        /// <summary>
-        /// index of object
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        TData this[int index] { get;set; }
     }
 }

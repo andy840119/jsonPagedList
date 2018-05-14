@@ -4,75 +4,29 @@ using System.Linq;
 namespace JsonPagedList
 {
     /// <summary>
-    /// Custom PageList
+    ///     Custom PageList
     /// </summary>
     /// <typeparam name="TData"></typeparam>
     public class PagedList<TData> : IPagedList<TData>
     {
         /// <summary>
-        /// Data
-        /// </summary>
-        public IDictionary<int, IList<TData>> Data { get; } = new Dictionary<int, IList<TData>>();
-
-        /// <summary>
-        /// Temp page index
-        /// </summary>
-        protected int PageIndex { get; set; }
-
-        /// <summary>
-        /// page size
-        /// </summary>
-        public int PageSize { get; set; }
-
-        /// <summary>
-        /// total count
-        /// </summary>
-        public int TotalCount { get; set; }
-
-        /// <summary>
-        /// total page
-        /// </summary>
-        public int TotalPages { get; set; }
-
-        /// <summary>
-        /// Min page
-        /// </summary>
-        public int MinDataPage => Data.Keys.Min();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public int MaxDataPage => Data.Keys.Max();
-
-        /// <summary>
-        /// has pervious page
-        /// </summary>
-        public bool HasPreviousPage => (MinDataPage > 0);
-
-        /// <summary>
-        /// has next page
-        /// </summary>
-        public bool HasNextPage => (MaxDataPage + 1 < TotalPages);
-
-        /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         public PagedList() : this(30)
         {
-
         }
 
         /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         public PagedList(int pageSize)
         {
             PageSize = pageSize;
-            Data.Add(new KeyValuePair<int, IList<TData>>(PageIndex,new List<TData>()));
+            Data.Add(new KeyValuePair<int, IList<TData>>(PageIndex, new List<TData>()));
         }
 
         /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         /// <param name="source">source</param>
         /// <param name="pageIndex">Page index</param>
@@ -93,7 +47,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         /// <param name="source">source</param>
         /// <param name="pageIndex">Page index</param>
@@ -114,7 +68,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Ctor
+        ///     Ctor
         /// </summary>
         /// <param name="source">source</param>
         /// <param name="pageIndex">Page index</param>
@@ -136,7 +90,51 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Add
+        ///     Temp page index
+        /// </summary>
+        protected int PageIndex { get; set; }
+
+        /// <summary>
+        ///     Data
+        /// </summary>
+        public IDictionary<int, IList<TData>> Data { get; } = new Dictionary<int, IList<TData>>();
+
+        /// <summary>
+        ///     page size
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
+        ///     total count
+        /// </summary>
+        public int TotalCount { get; set; }
+
+        /// <summary>
+        ///     total page
+        /// </summary>
+        public int TotalPages { get; set; }
+
+        /// <summary>
+        ///     Min page
+        /// </summary>
+        public int MinDataPage => Data.Keys.Min();
+
+        /// <summary>
+        /// </summary>
+        public int MaxDataPage => Data.Keys.Max();
+
+        /// <summary>
+        ///     has pervious page
+        /// </summary>
+        public bool HasPreviousPage => MinDataPage > 0;
+
+        /// <summary>
+        ///     has next page
+        /// </summary>
+        public bool HasNextPage => MaxDataPage + 1 < TotalPages;
+
+        /// <summary>
+        ///     Add
         /// </summary>
         /// <param name="item"></param>
         public void Add(TData item)
@@ -145,7 +143,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Clear
+        ///     Clear
         /// </summary>
         public void Clear()
         {
@@ -153,7 +151,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Contain
+        ///     Contain
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -163,7 +161,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// CopyTo
+        ///     CopyTo
         /// </summary>
         /// <param name="array"></param>
         /// <param name="arrayIndex"></param>
@@ -173,7 +171,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Remove
+        ///     Remove
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -183,17 +181,17 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// Count
+        ///     Count
         /// </summary>
         public int Count => Data[PageIndex].Count;
 
         /// <summary>
-        /// IsReadOnly
+        ///     IsReadOnly
         /// </summary>
         public bool IsReadOnly => false;
 
         /// <summary>
-        /// Index of
+        ///     Index of
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -203,7 +201,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// insert
+        ///     insert
         /// </summary>
         /// <param name="index"></param>
         /// <param name="item"></param>
@@ -213,7 +211,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// remove at
+        ///     remove at
         /// </summary>
         /// <param name="index"></param>
         public void RemoveAt(int index)
@@ -222,7 +220,7 @@ namespace JsonPagedList
         }
 
         /// <summary>
-        /// index of object
+        ///     index of object
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>

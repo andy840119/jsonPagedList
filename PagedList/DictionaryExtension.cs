@@ -3,12 +3,12 @@
 namespace JsonPagedList
 {
     /// <summary>
-    /// Dic extension 
+    ///     Dic extension
     /// </summary>
     public static class DictionaryExtension
     {
         /// <summary>
-        /// add or update
+        ///     add or update
         /// </summary>
         /// <typeparam name="TKey"></typeparam>
         /// <typeparam name="TValue"></typeparam>
