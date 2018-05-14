@@ -14,7 +14,7 @@ namespace Sample
 
             Console.WriteLine("Test 1 success");
 
-            var test2 = new TestCaseSerializeAndDeserialize();
+            var test2 = new TestCasePagedListExtension();
             test2.Test();
             Console.WriteLine("Test 2 success");
 

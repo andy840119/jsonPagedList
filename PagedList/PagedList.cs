@@ -60,6 +60,14 @@ namespace PagedList
         /// <summary>
         /// Ctor
         /// </summary>
+        public PagedList() : this(30)
+        {
+
+        }
+
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public PagedList(int pageSize)
         {
             PageSize = pageSize;
@@ -221,7 +229,6 @@ namespace PagedList
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        [JsonIgnore]
         public TData this[int index]
         {
             get => Data[PageIndex][index];

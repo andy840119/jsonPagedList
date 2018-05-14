@@ -15,27 +15,38 @@ namespace Sample
 
         public void Test()
         {
-            var pageList = new PagedList<TestCasePagedListExtension.PageListObject>(30);
-            pageList.Add(new TestCasePagedListExtension.PageListObject()
+            var pageList = new PagedList<PageListObject>(30);
+            pageList.Add(new PageListObject()
             {
                 Name = "AAA"
             });
-            pageList.Add(new TestCasePagedListExtension.PageListObject()
+            pageList.Add(new PageListObject()
             {
                 Name = "BBB"
             });
-            pageList.Add(new TestCasePagedListExtension.PageListObject()
+            pageList.Add(new PageListObject()
             {
                 Name = "CCC"
             });
 
-            pageList.CombinePageData(pageList);
+            var pageList2 = new PagedList<PageListObject>(30);
+            pageList2.Add(new PageListObject()
+            {
+                Name = "DDD"
+            });
+            pageList2.Add(new PageListObject()
+            {
+                Name = "EEE"
+            });
+            pageList2.Add(new PageListObject()
+            {
+                Name = "FFF"
+            });
+
+            pageList.CombinePageData(pageList2);
 
             string jsonResult = JsonConvert.SerializeObject(pageList);
-
             Console.WriteLine(jsonResult);
-
-            
         }
 
         class PageListObject
