@@ -54,6 +54,46 @@ namespace PagedList
         /// Convert IList to PagedList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
+        /// <param name="pagedList"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public static PagedList<TData> ToPageList<TData>(this IList<TData> pagedList, IPageRequest request)
+        {
+            var pageList = new PagedList<TData>(pagedList, request.Index, request.Size);
+            return pageList;
+        }
+
+        /// <summary>
+        /// Convert IQueryable to pageList
+        /// </summary>
+        /// <typeparam name="TData"></typeparam>
+        /// <param name="pagedList"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public static PagedList<TData> ToPageList<TData>(this IQueryable<TData> pagedList, IPageRequest request)
+        {
+            var pageList = new PagedList<TData>(pagedList, request.Index, request.Size);
+            return pageList;
+        }
+
+        /// <summary>
+        /// Convert IEnumerable to pageList
+        /// </summary>
+        /// <typeparam name="TData"></typeparam>
+        /// <param name="pagedList"></param>
+        /// <param name="request"></param>
+        /// <param name="totalCount"></param>
+        /// <returns></returns>
+        public static PagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, IPageRequest request, int totalCount)
+        {
+            var pageList = new PagedList<TData>(pagedList, request.Index, request.Size, totalCount);
+            return pageList;
+        }
+
+        /// <summary>
+        /// Convert IList to PagedList
+        /// </summary>
+        /// <typeparam name="TData"></typeparam>
         /// <typeparam name="TMataData"></typeparam>
         /// <param name="pagedList"></param>
         /// <param name="pageIndex"></param>
