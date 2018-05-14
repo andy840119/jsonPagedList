@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <RootNamespace>PagedList</RootNamespace>
+    <RootNamespace>JsonPagedList</RootNamespace>
     <Authors>andy840119</Authors>
     <Product>JsonPagedList.Extension</Product>
     <PackageId>JsonPagedList.Extension</PackageId>

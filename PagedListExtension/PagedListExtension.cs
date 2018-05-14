@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Reflection;
-using JsonPagedList;
 
-namespace PagedList
+namespace JsonPagedList
 {
     public static class PagedListExtension
     {
