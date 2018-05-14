@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PagedListExtension\JsonPagedListExtension.csproj" />
+    <ProjectReference Include="..\PagedListExtension\JsonPagedList.Extension.csproj" />
     <ProjectReference Include="..\PagedList\JsonPagedList.csproj" />
   </ItemGroup>
 

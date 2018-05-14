@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{CB416720-29F6-4F99-9C83-6900AB84DA5E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonPagedListExtension", "PagedListExtension\JsonPagedListExtension.csproj", "{4FA9AB34-867F-413A-8D77-9C63FB384464}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonPagedList.Extension", "PagedListExtension\JsonPagedList.Extension.csproj", "{4FA9AB34-867F-413A-8D77-9C63FB384464}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
