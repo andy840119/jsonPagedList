@@ -15,6 +15,8 @@ namespace JsonPagedList
         /// </summary>
         IDictionary<int, IList<TData>> Data { get; }
 
+        int CurrentPageIndex { get; set; }
+
         /// <summary>
         ///     Count
         /// </summary>
@@ -31,6 +33,18 @@ namespace JsonPagedList
         /// <param name="index"></param>
         /// <returns></returns>
         TData this[int index] { get; set; }
+
+        /// <summary>
+        ///     get data by index
+        /// </summary>
+        /// <returns></returns>
+        IList<TData> GetDataByPageIndex(int pageIndex);
+
+        /// <summary>
+        ///     get data by index
+        /// </summary>
+        /// <returns></returns>
+        IList<TData> GetDataByCurrentPageIndex();
 
         /// <summary>
         ///     Add
