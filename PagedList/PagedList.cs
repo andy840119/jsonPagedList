@@ -10,7 +10,7 @@ namespace PagedList
     /// Paged list with dafault metadata
     /// </summary>
     /// <typeparam name="TData"></typeparam>
-    public class PagedList<TData> : PagedList<PageMetaData, TData>
+    public partial class PagedList<TData> : PagedList<PageMetaData, TData>
     {
         /// <summary>
         /// Ctor
@@ -60,7 +60,7 @@ namespace PagedList
     /// </summary>
     /// <typeparam name="TMataData"></typeparam>
     /// <typeparam name="TData"></typeparam>
-    public class PagedList<TMataData,TData> : IPagedList<TMataData,TData> where TMataData : class, IPageMetaData , new ()
+    public partial class PagedList<TMataData,TData> : IPagedList<TMataData,TData> where TMataData : class, IPageMetaData , new ()
     {
         /// <summary>
         /// Data
@@ -150,50 +150,97 @@ namespace PagedList
             }
         }
 
+        /// <summary>
+        /// Add
+        /// </summary>
+        /// <param name="item"></param>
         public void Add(TData item)
         {
             Data.Add(item);
         }
 
+        /// <summary>
+        /// Clear
+        /// </summary>
         public void Clear()
         {
             Data.Clear();
         }
 
+        /// <summary>
+        /// Contain
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Contains(TData item)
         {
             return Data.Contains(item);
         }
 
+        /// <summary>
+        /// CopyTo
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="arrayIndex"></param>
         public void CopyTo(TData[] array, int arrayIndex)
         {
             Data.CopyTo(array, arrayIndex);
         }
 
+        /// <summary>
+        /// Remove
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Remove(TData item)
         {
             return Data.Remove(item);
         }
 
+        /// <summary>
+        /// Count
+        /// </summary>
         public int Count => Data.Count;
 
+        /// <summary>
+        /// IsReadOnly
+        /// </summary>
         public bool IsReadOnly => false;
 
+        /// <summary>
+        /// Index of
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public int IndexOf(TData item)
         {
             return Data.IndexOf(item);
         }
 
+        /// <summary>
+        /// insert
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="item"></param>
         public void Insert(int index, TData item)
         {
             Data.Insert(index, item);
         }
 
+        /// <summary>
+        /// remove at
+        /// </summary>
+        /// <param name="index"></param>
         public void RemoveAt(int index)
         {
             Data.RemoveAt(index);
         }
 
+        /// <summary>
+        /// index of object
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         [JsonIgnore]
         public TData this[int index]
         {

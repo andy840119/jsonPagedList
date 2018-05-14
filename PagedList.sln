@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{CB416720-29F6-4F99-9C83-6900AB84DA5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagedListExtension", "PagedListExtension\PagedListExtension.csproj", "{4FA9AB34-867F-413A-8D77-9C63FB384464}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +25,17 @@ Global
 		{7681DD70-E58F-4808-AB6B-37FBE06C1275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7681DD70-E58F-4808-AB6B-37FBE06C1275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7681DD70-E58F-4808-AB6B-37FBE06C1275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FA9AB34-867F-413A-8D77-9C63FB384464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA9AB34-867F-413A-8D77-9C63FB384464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA9AB34-867F-413A-8D77-9C63FB384464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA9AB34-867F-413A-8D77-9C63FB384464}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3A8A933B-B98B-4341-8BB6-EF95A13AF3F6} = {CB416720-29F6-4F99-9C83-6900AB84DA5E}
+		{4FA9AB34-867F-413A-8D77-9C63FB384464} = {CB416720-29F6-4F99-9C83-6900AB84DA5E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {882F8FA1-8162-4A2C-83FC-EF212B2D1867}
