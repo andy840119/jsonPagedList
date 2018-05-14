@@ -22,6 +22,16 @@ namespace PagedList
         int TotalPages { get; set; }
 
         /// <summary>
+        /// Min page
+        /// </summary>
+        int MinDataPage { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        int MaxDataPage { get; }
+
+        /// <summary>
         /// has pervious page
         /// </summary>
         bool HasPreviousPage { get; }

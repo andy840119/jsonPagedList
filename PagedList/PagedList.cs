@@ -38,14 +38,24 @@ namespace PagedList
         public int TotalPages { get; set; }
 
         /// <summary>
+        /// Min page
+        /// </summary>
+        public int MinDataPage => Data.Keys.Min();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int MaxDataPage => Data.Keys.Max();
+
+        /// <summary>
         /// has pervious page
         /// </summary>
-        public bool HasPreviousPage => (Data.Keys.Min() > 0);
+        public bool HasPreviousPage => (MinDataPage > 0);
 
         /// <summary>
         /// has next page
         /// </summary>
-        public bool HasNextPage => (Data.Keys.Max() + 1 < TotalPages);
+        public bool HasNextPage => (MaxDataPage + 1 < TotalPages);
 
         /// <summary>
         /// Ctor
