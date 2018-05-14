@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PagedList
+﻿namespace JsonPagedList
 {
     /// <summary>
     /// Page request

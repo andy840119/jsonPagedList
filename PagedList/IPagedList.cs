@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 
-namespace PagedList
+namespace JsonPagedList
 {
     /// <summary>
     /// Because <see cref="PagedList{T}"/> inherit IList will lose data on serialize data
