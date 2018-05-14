@@ -13,7 +13,7 @@ namespace JsonPagedList
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IList<TData> pagedList, int pageIndex, int pageSize)
+        public static PagedList<TData> ToPageList<TData>(this IList<TData> pagedList, int pageIndex, int pageSize)
         {
             var pageList = new PagedList<TData>(pagedList, pageIndex, pageSize);
             return pageList;
@@ -27,7 +27,7 @@ namespace JsonPagedList
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IQueryable<TData> pagedList, int pageIndex, int pageSize)
+        public static PagedList<TData> ToPageList<TData>(this IQueryable<TData> pagedList, int pageIndex, int pageSize)
         {
             var pageList = new PagedList<TData>(pagedList, pageIndex, pageSize);
             return pageList;
@@ -42,7 +42,7 @@ namespace JsonPagedList
         /// <param name="pageSize"></param>
         /// <param name="totalCount"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, int pageIndex,
+        public static PagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, int pageIndex,
             int pageSize, int totalCount)
         {
             var pageList = new PagedList<TData>(pagedList, pageIndex, pageSize, totalCount);
@@ -56,7 +56,7 @@ namespace JsonPagedList
         /// <param name="pagedList"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IList<TData> pagedList, IPageRequest request)
+        public static PagedList<TData> ToPageList<TData>(this IList<TData> pagedList, IPageRequest request)
         {
             var pageList = new PagedList<TData>(pagedList, request.Index, request.Size);
             return pageList;
@@ -69,7 +69,7 @@ namespace JsonPagedList
         /// <param name="pagedList"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IQueryable<TData> pagedList, IPageRequest request)
+        public static PagedList<TData> ToPageList<TData>(this IQueryable<TData> pagedList, IPageRequest request)
         {
             var pageList = new PagedList<TData>(pagedList, request.Index, request.Size);
             return pageList;
@@ -83,7 +83,7 @@ namespace JsonPagedList
         /// <param name="request"></param>
         /// <param name="totalCount"></param>
         /// <returns></returns>
-        public static IPagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, IPageRequest request,
+        public static PagedList<TData> ToPageList<TData>(this IEnumerable<TData> pagedList, IPageRequest request,
             int totalCount)
         {
             var pageList = new PagedList<TData>(pagedList, request.Index, request.Size, totalCount);
@@ -96,7 +96,7 @@ namespace JsonPagedList
         /// <typeparam name="T"></typeparam>
         /// <param name="pagedList"></param>
         /// <returns></returns>
-        public static IList<T> ToList<T>(this PagedList<T> pagedList) where T : struct
+        public static List<T> ToList<T>(this PagedList<T> pagedList) where T : struct
         {
             return pagedList.Data.SelectMany(x => x.Value).ToList();
         }

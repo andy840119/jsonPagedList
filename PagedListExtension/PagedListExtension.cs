@@ -33,7 +33,7 @@ namespace JsonPagedList
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
         /// <returns></returns>
-        public static IPageRequest CreatePervoiusPageRequest<TData>(this IPagedList<TData> pagedList)
+        public static PageRequest CreatePervoiusPageRequest<TData>(this IPagedList<TData> pagedList)
         {
             if (!pagedList.HasPreviousPage)
                 return null;
@@ -51,7 +51,7 @@ namespace JsonPagedList
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
         /// <returns></returns>
-        public static IPageRequest CreateNextPageRequest<TData>(this IPagedList<TData> pagedList)
+        public static PageRequest CreateNextPageRequest<TData>(this IPagedList<TData> pagedList)
         {
             if (!pagedList.HasNextPage)
                 return null;
