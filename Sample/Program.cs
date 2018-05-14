@@ -9,9 +9,15 @@ namespace Sample
     {
         static void Main(string[] args)
         {
-            var test = new TestCaseSerializeAndDeserialize();
-            test.Test();
-            Console.WriteLine("Test success");
+            var test1 = new TestCaseSerializeAndDeserialize();
+            test1.Test();
+
+            Console.WriteLine("Test 1 success");
+
+            var test2 = new TestCaseSerializeAndDeserialize();
+            test2.Test();
+            Console.WriteLine("Test 2 success");
+
             var rowConsoleText = Console.ReadLine();
         }
     }

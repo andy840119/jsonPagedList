@@ -60,8 +60,9 @@ namespace PagedList
         /// <summary>
         /// Ctor
         /// </summary>
-        public PagedList()
+        public PagedList(int pageSize)
         {
+            PageSize = pageSize;
             Data.Add(new KeyValuePair<int, IList<TData>>(PageIndex,new List<TData>()));
         }
 

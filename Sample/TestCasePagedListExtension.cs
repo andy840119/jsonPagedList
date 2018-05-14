@@ -15,7 +15,7 @@ namespace Sample
 
         public void Test()
         {
-            var pageList = new PagedList<TestCasePagedListExtension.PageListObject>();
+            var pageList = new PagedList<TestCasePagedListExtension.PageListObject>(30);
             pageList.Add(new TestCasePagedListExtension.PageListObject()
             {
                 Name = "AAA"

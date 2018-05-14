@@ -18,6 +18,9 @@ namespace PagedList
             if (pagedList1.PageSize != pagedList2.PageSize)
                 throw new AmbiguousMatchException(nameof(IPagedList<TData>) + "'s page size shuld be same");
 
+            if(pagedList1 == pagedList2)
+                throw new ArgumentException(nameof(pagedList1) + "cannot be same as " + nameof(pagedList2));
+
             foreach (var value in pagedList2.Data)
             {
                 pagedList1.Data.AddOrUpdate(value);
