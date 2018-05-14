@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>PagedList</RootNamespace>
+    <Authors>andy840119</Authors>
+    <Product>JsonPagedList.Extension</Product>
+    <PackageId>JsonPagedList.Extension</PackageId>
+    <Description>Package PagedList 's extension</Description>
+    <Copyright>andy840119</Copyright>
+    <PackageLicenseUrl>https://github.com/andy840119/jsonPagedList/blob/master/README.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/andy840119/jsonPagedList</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/andy840119/jsonPagedList</RepositoryUrl>
+    <RepositoryType>C#</RepositoryType>
+    <PackageTags>PagedList Json Extension</PackageTags>
+    <Version>1.0.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PagedList\JsonPagedList.csproj" />
+  </ItemGroup>
+
+</Project>
