@@ -10,7 +10,7 @@ namespace PagedList
     /// Paged list with dafault metadata
     /// </summary>
     /// <typeparam name="TData"></typeparam>
-    public partial class PagedList<TData> : PagedList<PageMetaData, TData>
+    public class PagedList<TData> : PagedList<PageMetaData, TData>
     {
         /// <summary>
         /// Ctor
@@ -60,7 +60,7 @@ namespace PagedList
     /// </summary>
     /// <typeparam name="TMataData"></typeparam>
     /// <typeparam name="TData"></typeparam>
-    public partial class PagedList<TMataData,TData> : IPagedList<TMataData,TData> where TMataData : class, IPageMetaData , new ()
+    public class PagedList<TMataData,TData> : IPagedList<TMataData,TData> where TMataData : class, IPageMetaData , new ()
     {
         /// <summary>
         /// Data
