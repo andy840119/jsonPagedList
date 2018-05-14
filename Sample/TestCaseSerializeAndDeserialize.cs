@@ -28,8 +28,6 @@ namespace Sample
             {
                 Name = "CCC"
             });
-            pageList.MetaData.HasNextPage = true;
-            pageList.MetaData.HasNextPage = true;
 
             string jsonResult = JsonConvert.SerializeObject(pageList);
 

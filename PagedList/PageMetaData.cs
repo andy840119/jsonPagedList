@@ -29,11 +29,11 @@ namespace PagedList
         /// <summary>
         /// has pervious page
         /// </summary>
-        public bool HasPreviousPage { get; set; }
+        public bool HasPreviousPage => (PageIndex > 0);
 
         /// <summary>
         /// has next page
         /// </summary>
-        public bool HasNextPage { get; set; }
+        public bool HasNextPage => (PageIndex + 1 < TotalPages);
     }
 }

@@ -88,11 +88,10 @@ namespace PagedList
         /// <param name="pageSize">Page size</param>
         public PagedList(IQueryable<TData> source, int pageIndex, int pageSize)
         {
-            var total = source.Count();
-            MetaData.TotalCount = total;
-            MetaData.TotalPages = total / pageSize;
+            MetaData.TotalCount = source.Count();
+            MetaData.TotalPages = MetaData.TotalCount / pageSize;
 
-            if (total % pageSize > 0)
+            if (MetaData.TotalCount % pageSize > 0)
                 MetaData.TotalPages++;
 
             MetaData.PageSize = pageSize;
