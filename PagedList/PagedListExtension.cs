@@ -34,6 +34,20 @@ namespace JsonPagedList
         }
 
         /// <summary>
+        ///     Convert ICollection to pageList
+        /// </summary>
+        /// <typeparam name="TData"></typeparam>
+        /// <param name="pagedList"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public static PagedList<TData> ToPageList<TData>(this ICollection<TData> pagedList, int pageIndex, int pageSize)
+        {
+            var pageList = new PagedList<TData>(pagedList, pageIndex, pageSize);
+            return pageList;
+        }
+
+        /// <summary>
         ///     Convert IEnumerable to pageList
         /// </summary>
         /// <typeparam name="TData"></typeparam>
@@ -70,6 +84,19 @@ namespace JsonPagedList
         /// <param name="request"></param>
         /// <returns></returns>
         public static PagedList<TData> ToPageList<TData>(this IQueryable<TData> pagedList, IPageRequest request)
+        {
+            var pageList = new PagedList<TData>(pagedList, request.Index, request.Size);
+            return pageList;
+        }
+
+        /// <summary>
+        ///     Convert ICollection to pageList
+        /// </summary>
+        /// <typeparam name="TData"></typeparam>
+        /// <param name="pagedList"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public static PagedList<TData> ToPageList<TData>(this ICollection<TData> pagedList, IPageRequest request)
         {
             var pageList = new PagedList<TData>(pagedList, request.Index, request.Size);
             return pageList;

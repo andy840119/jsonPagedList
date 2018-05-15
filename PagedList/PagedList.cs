@@ -53,6 +53,27 @@ namespace JsonPagedList
         /// <param name="source">source</param>
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
+        public PagedList(ICollection<TData> source, int pageIndex, int pageSize)
+        {
+            TotalCount = source.Count();
+            TotalPages = TotalCount / pageSize;
+
+            if (TotalCount % pageSize > 0)
+                TotalPages++;
+
+            PageSize = pageSize;
+            CurrentPageIndex = pageIndex;
+
+            var list = source.AsEnumerable().Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            Data.Add(new KeyValuePair<int, IList<TData>>(CurrentPageIndex, list));
+        }
+
+        /// <summary>
+        ///     Ctor
+        /// </summary>
+        /// <param name="source">source</param>
+        /// <param name="pageIndex">Page index</param>
+        /// <param name="pageSize">Page size</param>
         public PagedList(IList<TData> source, int pageIndex, int pageSize)
         {
             TotalCount = source.Count();

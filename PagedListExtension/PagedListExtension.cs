@@ -33,12 +33,12 @@ namespace JsonPagedList
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
         /// <returns></returns>
-        public static PageRequest CreatePervoiusPageRequest<TData>(this IPagedList<TData> pagedList)
+        public static PagedListRequest CreatePervoiusPageRequest<TData>(this IPagedList<TData> pagedList)
         {
             if (!pagedList.HasPreviousPage)
                 return null;
 
-            return new PageRequest
+            return new PagedListRequest
             {
                 Index = pagedList.MinDataPage - 1,
                 Size = pagedList.PageSize
@@ -51,12 +51,12 @@ namespace JsonPagedList
         /// <typeparam name="TData"></typeparam>
         /// <param name="pagedList"></param>
         /// <returns></returns>
-        public static PageRequest CreateNextPageRequest<TData>(this IPagedList<TData> pagedList)
+        public static PagedListRequest CreateNextPageRequest<TData>(this IPagedList<TData> pagedList)
         {
             if (!pagedList.HasNextPage)
                 return null;
 
-            return new PageRequest
+            return new PagedListRequest
             {
                 Index = pagedList.MaxDataPage + 1,
                 Size = pagedList.PageSize
