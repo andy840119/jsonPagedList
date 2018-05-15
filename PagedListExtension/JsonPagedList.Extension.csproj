@@ -14,7 +14,7 @@
     <RepositoryUrl>https://github.com/andy840119/jsonPagedList</RepositoryUrl>
     <RepositoryType>C#</RepositoryType>
     <PackageTags>PagedList Json Extension</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
